@@ -1,51 +1,77 @@
-<div>This is the usuarios-create view.</div>
+
 
 <form name="userForm" ng-submit="vm.createUser()">
-    <label for="">Tipo Documento</label>
-    <select name="" id="" ng-model="vm.usuario.tipoDocumento.id">
-		<option ng-value="{{item.id}}" ng-repeat="item in vm.tiposDocumento">{{item.descripcion}}</option>
-	</select>
+  <label for="">Tipo Documento</label>
+  <select name="" id="" ng-model="vm.usuario.tipoDocumento.id">
+    <option ng-value="{{item.id}}" ng-repeat="item in vm.tiposDocumento">{{item.descripcion}}</option>
+  </select>
+  
 
-    <label for="">Documento</label>
-    <input type="text" ng-model="vm.usuario.numDocumento">
+  <label for="">Documento</label>
+  <input type="text" ng-model="vm.usuario.numDocumento">
 
-    <label for="">Apellidos</label>
-    <input type="text" ng-model="vm.usuario.apellidos">
+  <label for="">Apellidos</label>
+  <input type="text" ng-model="vm.usuario.apellidos">
 
-    <label for="">Nombres</label>
-    <input type="text" ng-model="vm.usuario.nombres">
+  <label for="">Nombres</label>
+  <input type="text" ng-model="vm.usuario.nombres">
 
-    <label for="">Email</label>
-    <input type="text" ng-model="vm.usuario.email">
+  <label for="">Email</label>
+  <input type="text" ng-model="vm.usuario.email">
 
-    <label for="">password</label>
-    <input type="password" ng-model="vm.usuario.password">
+  <label for="">password</label>
+  <input type="password" ng-model="vm.usuario.password">
 
-    <label for="">Sexo</label>
-    <input type="text" ng-model="vm.usuario.sexo">
+  <label for="">Sexo</label>
+  <input type="text" ng-model="vm.usuario.sexo">
 
-    <label for="">Departamentos</label>
+  <label for="">Departamentos</label>
 
-    <select name="" id="" ng-model="vm.idDepartamento" ng-change="vm.getCiudades()">
-		<option ng-value="{{item.id}}" ng-repeat="item in vm.departamentos">{{item.nombre}}</option>
-	</select>
+  <select name="" id="" ng-model="vm.idDepartamento" ng-change="vm.getCiudades()">
+    <option ng-value="{{item.id}}" ng-repeat="item in vm.departamentos">{{item.nombre}}</option>
+  </select>
 
-    <label for="">Ciudad</label>
-    <select name="" id="" ng-model="vm.usuario.ciudad.id">
-		<option ng-value="{{item.id}}" ng-repeat="item in vm.ciudades">{{item.nombre}}</option>
-	</select>
+  <label for="">Ciudad</label>
+  <select name="" id="" ng-model="vm.usuario.ciudad.id">
+    <option ng-value="{{item.id}}" ng-repeat="item in vm.ciudades">{{item.nombre}}</option>
+  </select>
 
-    <div>
-        <label for="foto-input">
-            	       Subir Foto
-          	  </label>
-        <input type="file" id="foto-input" style="visibility:hidden;" accept="image/*" on-read-img="vm.imageLoad($fileContent)">
-    </div>
-    <div class="cropArea center-block img-responsive">
-        <img-crop image="vm.image" result-image="vm.croppedImage" area-type="rectangle" aspect-ratio="1.6" init-max-area="true" result-image-size='{w: 400,h: 250}' chargement="'Cargando'">
-        </img-crop>
-    </div>
+  <div>
+    <label for="foto-input">
+      Subir Foto
+    </label>
+    <input type="file" id="foto-input" style="visibility:hidden;" accept="image/*" on-read-img="vm.imageLoad($fileContent)">
+  </div>
+  <div class="cropArea center-block img-responsive">
+    <img-crop image="vm.image" result-image="vm.croppedImage" area-type="rectangle" aspect-ratio="1.6" init-max-area="true" result-image-size='{w: 400,h: 250}' chargement="'Cargando'">
+  </img-crop>
+</div>
 
-    <button type="submit">Registrar</button>
+<!--Autocomplete Angular material-->
+<div>
+  <md-autocomplete flex required
+  md-input-name="autocompleteField"
+  md-input-minlength="2"
+  md-input-maxlength="18"
+  md-selected-item="vm.selectedItem"
+  md-search-text="vm.searchText"
+  md-items="item in vm.querySearch(vm.searchText)"
+  md-item-text="item.nombre"
+  md-require-match
+  md-floating-label="Favorite state">
+  <md-item-template>
+    <span md-highlight-text="vm.searchText">{{item.nombre}}</span>
+  </md-item-template>
+  <div ng-messages="searchForm.autocompleteField.$error" ng-if="searchForm.autocompleteField.$touched">
+    <div ng-message="required">You <b>must</b> have a favorite state.</div>
+    <div ng-message="md-require-match">Please select an existing state.</div>
+    <div ng-message="minlength">Your entry is not long enough.</div>
+    <div ng-message="maxlength">Your entry is too long.</div>
+  </div>
+</md-autocomplete>
+</div>
+
+<!--Fin Autocomplete Angular material-->
+<button type="submit">Registrar</button>
 
 </form>
