@@ -1,0 +1,23 @@
+<table class="table table-hover">
+
+<thead>
+    <tr>
+        <td>id</td>
+        <td>Marca</td>
+        <td>Descripcion</td>
+        <td>Valor alquiler</td>
+        <td>Valor con descuento</td>
+        <td>Tipo</td>
+    </tr>
+</thead>
+<tbody>
+    <tr ng-repeat="item in vm.vehiculos">
+            <td>{{item.id}}</td>
+            <td>{{item.marca}}</td>
+            <td>{{item.descripcion}}</td>
+            <td>{{item.valorAlquiler}}</td>
+            <td>{{item.valorDescuento}}</td>
+            <td>{{item.tipo}}</td>  
+    </tr>
+</tbody>
+</table>
