@@ -12,7 +12,8 @@ angular.module('videoClubApp', [
         'ngImgCrop',
         'ngFileSaver',
         'ngMaterial',
-        'LocalStorageModule'
+        'LocalStorageModule',
+        'md.data.table'
     ])
     .constant("API", "http://localhost:8080/adsi2017_backend")
     .config(function($urlRouterProvider, $locationProvider, $authProvider, API,localStorageServiceProvider) {
