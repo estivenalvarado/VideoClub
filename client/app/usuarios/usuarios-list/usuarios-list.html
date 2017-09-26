@@ -1,6 +1,6 @@
 <section class="container" ng-cloak="">
-	
-	<div>This is the usuarios-list view.</div>
+<!--
+	<h3>Listado de Usuarios</h3>
 
 	<table class="table table-hover">
 		<thead>
@@ -20,4 +20,37 @@
 			</tr>
 		</tbody>
 	</table>
+</section>
+
+-->
+
+<md-toolbar class="md-table-toolbar md-default">
+  <div class="md-toolbar-tools">
+    <span>Usuarios</span>
+  </div>
+</md-toolbar>
+
+<!-- exact table from live demo -->
+<md-table-container>
+  <table md-table >
+    <thead md-head md-order="vm.query.order">
+      <tr md-row>
+        <th md-column md-numeric>Nombres</th>
+        <th md-column md-numeric>Apellidos</th>
+        <th md-column md-numeric>Email</th>
+        <th md-column md-numeric>Acción</th>
+      </tr>
+    </thead>
+    <tbody md-body>
+      <tr md-row ng-repeat="item in vm.usuarios | limitTo: vm.query.limit: (vm.query.page - 1) * vm.query.limit"">
+        <td md-cell>{{item.nombres}}</td>
+        <td md-cell>{{item.apellidos}}</td>
+        <td md-cell>{{item.email}}</td>
+        <td><a class="btn btn-primary" ui-sref="usuarios-update({idUsuario:item.id})">Editar</a></td>
+      </tr>
+    </tbody>
+  </table>
+</md-table-container>
+
+<md-table-pagination md-limit="vm.query.limit" md-limit-options="[5, 10, 15]" md-page="vm.query.page" md-total="{{vm.usuarios.length}}" md-page-select></md-table-pagination>
 </section>

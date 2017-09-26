@@ -5,6 +5,11 @@
 class UsuariosListComponent {
   constructor(usuariosService) {
     this.usuariosService = usuariosService;
+    this.query={
+      order: 'nombres',
+      limit: 5,
+      page:1
+    };
   }
 
   $onInit(){

@@ -5,7 +5,7 @@
   <select name="" id="" ng-model="vm.usuario.tipoDocumento.id">
     <option ng-value="{{item.id}}" ng-repeat="item in vm.tiposDocumento">{{item.descripcion}}</option>
   </select>
-  
+
 
   <label for="">Documento</label>
   <input type="text" ng-model="vm.usuario.numDocumento">
@@ -23,10 +23,13 @@
   <input type="password" ng-model="vm.usuario.password">
 
   <label for="">Sexo</label>
-  <input type="text" ng-model="vm.usuario.sexo">
+  <select name="" id="" ng-model="vm.usuario.sexo">
+    <option value="F">F</option>
+    <option value="M">M</option>
+    <option value="O">O</option>
+  </select
 
-  <label for="">Departamentos</label>
-
+  <label for=""> Departamento</label>
   <select name="" id="" ng-model="vm.idDepartamento" ng-change="vm.getCiudades()">
     <option ng-value="{{item.id}}" ng-repeat="item in vm.departamentos">{{item.nombre}}</option>
   </select>
@@ -35,6 +38,8 @@
   <select name="" id="" ng-model="vm.usuario.ciudad.id">
     <option ng-value="{{item.id}}" ng-repeat="item in vm.ciudades">{{item.nombre}}</option>
   </select>
+
+
 
   <div>
     <label for="foto-input">
@@ -48,6 +53,7 @@
 </div>
 
 <!--Autocomplete Angular material-->
+<!--
 <div>
   <md-autocomplete flex required
   md-input-name="autocompleteField"
@@ -70,7 +76,7 @@
   </div>
 </md-autocomplete>
 </div>
-
+-->
 <!--Fin Autocomplete Angular material-->
 <button type="submit">Registrar</button>
 
